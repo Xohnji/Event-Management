@@ -137,10 +137,18 @@ void New_Booking()
     // Client Informations
     std::cout << "\n<-----------CLIENT INFORMATION----------->\n";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    
     std::cout << "Enter Client Name: ";
     std::getline(std::cin, ClientName);
+    
     std::cout << "Enter Contact Number: ";
     std::getline(std::cin, ClientNum);
+    while (ClientNum.length() != 11 || ClientNum.substr(0, 2) != "09") {
+        std::cout << "Invalid contact number! Must be 11 digits starting with '09'. Please try again.\n";
+        std::cout << "Enter Contact Number: ";
+        std::getline(std::cin, ClientNum);
+    }
+    
     std::cout << "Enter Client Address: ";
     std::getline(std::cin, ClientAddress);
 
@@ -505,3 +513,4 @@ void ExportBookingToCSV()
 
     std::cout << "Booking exported to CSV: " << filename << std::endl;
 }
+
