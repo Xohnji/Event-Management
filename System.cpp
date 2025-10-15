@@ -166,12 +166,23 @@ void New_Booking()
     std::cout << "\n<-----------EVENT DETAILS----------->\n";
     std::cout << "Enter Venue Name (e.g., THe Blue Leaf): ";
     std::getline(std::cin, Venue);
+    
     std::cout << "Enter Key Landmarks (for logistics): ";
     std::getline(std::cin, ClientLandmarks);
+    
     std::cout << "Enter Estimated Pax (Min. 60): ";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin >> PaxAmount;
-
+    // another pangsyon PaxAmount checkerrrr -axel
+    while (PaxAmount < 60 || PaxAmount % 10 != 0)
+    {
+        std::cout << "Invalid Inputttt!!!\n";
+        std::cout << "Tips: Dapat daw minimum of 60 and divisible always by 10 sabi ni J Palas\n";
+        std::cout << "Enter Estimated Pax (Min. 60): ";
+        std::cin >> PaxAmount;
+    }
+    std::cout << "PaxAmount = " << PaxAmount << '\n';
+    
     std::cout << "\n<------------------------------------->\n";
     Create_EventId();
 
@@ -513,4 +524,5 @@ void ExportBookingToCSV()
 
     std::cout << "Booking exported to CSV: " << filename << std::endl;
 }
+
 
