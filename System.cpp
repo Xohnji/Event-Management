@@ -25,7 +25,23 @@ void Clear_Terminal();
 void Create_EventId();
 void pressEnterToContinue();
 void ExportBookingToCSV();
+
+
+
+
+// VOID PROTO. SA BUONG CALENDAR EVENT!!!
+// NAG ADD AKO COMMENT PARA PAG MAG ADD NG FUNCTION HINDI MALITO
 void View_Booking_Calendar();
+void Filter_Booking_Calendar();
+void View_All_Inquiries();
+void Filter_MONTH();
+void Filter_YEAR();
+void Convert_Inquiry();
+void Filter_Inquiries();
+void Inquiries_Status();
+void Inquiries_Event_Date();
+
+
 #pragma region NewBooking
 void New_Booking();
 void CateringMain();
@@ -527,9 +543,9 @@ void ExportBookingToCSV()
 
 
 // Event Calendar
-// Axel: Cout palang sya walang datas sa tables,
+// Axel: Framework palang sya walang datas sa tables, para mag ka datas need mag manipulate sa .CSV file
 // bahala na si James mag operate ng function neto
-// dahil wala akong alam sa CSV kung pano i rerekta ung data from CSV to terminal.
+// dahil wala akong alam sa CSV kung pano i rerekta ung client.data from CSV to win/unix terminal.
 void View_Booking_Calendar()
 {
     Clear_Terminal();
@@ -538,28 +554,281 @@ void View_Booking_Calendar()
     std::cout << "==============================================\n";
     std::cout << "Current Date: \n";
 
-    std::cout << "--- CONFIRMED & PENDING EVENT SCHEDULE ---\n";
+    std::cout << "\n--- CONFIRMED & PENDING EVENT SCHEDULE ---\n";
     std::cout << "---------------------------------------------------------------------------------------\n";
     std::cout << "|   DATE   | EVENT ID  |      CLIENT NAME      |         STATUS        |  TOTAL GUEST |\n";
     std::cout << "|----------|-----------|-----------------------|-----------------------|--------------|\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
-    std::cout << "|          |           |                       |                       |              |\n";
 
     std::cout << "\n--- CALENDAR ACTIONS ---\n";
     std::cout << "1. Filter Calendar (Month/Year)\n";
     std::cout << "2. View All Inquiries (Includes dates on soft hold)\n";
     std::cout << "3. Return to Main Menu\n";
 
+    int VBC_choice;
     std::cout << "Enter Choice (1-3): ";
+    std::cin >> VBC_choice;
+    
+    switch (VBC_choice)
+    {
+        case 1:
+            Filter_Booking_Calendar();
+            break;
+            
+        case 2:
+            View_All_Inquiries();
+            break;
+            
+        case 3:
+            Clear_Terminal();
+            main();
+            break;
+            
+        default:
+            std::cout << "Inbaliddd!!!\n";
+            View_Booking_Calendar();
+            break;
+    }
 }
 
 
 
+// Part 1 ng filtering
+// Filtering Calendar
+void Filter_Booking_Calendar()
+{
+    Clear_Terminal();
+    std::cout << "===============================================\n";
+    std::cout << "| CALENDAR ACTION: 1. FILTER BOOKING CALENDAR |\n";
+    std::cout << "===============================================\n";
+    std::cout << "Total Active Event:\n\n";
+
+    std::cout << "--- FILTER CRITERIA ---\n";
+    std::cout << "1. Filter by MONTH\n";
+    std::cout << "2. Filter by YEAR\n";
+    std::cout << "3. Show all Booking (Clear Filter)\n";
+    std::cout << "4. Return to Booking Calendar Menu\n\n";
+
+    int FBC_choice;
+    std::cout << "Enter Choice (1-4): ";
+    std::cin >> FBC_choice;
+    
+    switch (FBC_choice)
+    {
+        
+        case 1:
+            Filter_MONTH();
+            break;
+
+        case 2:
+            Filter_YEAR();
+            break;
+
+        case 3:
+            View_Booking_Calendar();
+            break;
+            
+        case 4:
+            View_Booking_Calendar();
+            break;
+            
+        default:
+            std::cout << "Inbaliddd!!!\n";
+            Filter_Booking_Calendar();
+            break;
+    }
+}    
+
+void Filter_MONTH()
+{
+    std::cout << "=============================================\n";
+    std::cout << "| CALENDAR FILTER: 1. FILTER BY MONTH       |\n";
+    std::cout << "=============================================\n";
+    
+    int filter_month;
+    std::cout << "Enter Month (MM) to filter for: ";
+    std::cin >> filter_month;
+    
+    std::cout << "\n--- FILTER RESULT ---\n";
+    std::cout << "---------------------------------------------------------------------------------------\n";
+    std::cout << "|   DATE   | EVENT ID  |      CLIENT NAME      |         STATUS        |  TOTAL GUEST |\n";
+    std::cout << "|----------|-----------|-----------------------|-----------------------|--------------|\n";    
+    pressEnterToContinue();
+    Clear_Terminal();
+    View_Booking_Calendar();
+}
+
+void Filter_YEAR()
+{
+    std::cout << "=============================================\n";
+    std::cout << "| CALENDAR FILTER: 2. FILTER BY YEAR        |\n";
+    std::cout << "=============================================\n";
+    
+    int filter_year;
+    std::cout << "Enter Year (YYYY) to filter for: ";
+    std::cin >> filter_year;
+    
+    std::cout << "\n--- FILTER RESULT ---\n";
+    std::cout << "---------------------------------------------------------------------------------------\n";
+    std::cout << "|   DATE   | EVENT ID  |      CLIENT NAME      |         STATUS        |  TOTAL GUEST |\n";
+    std::cout << "|----------|-----------|-----------------------|-----------------------|--------------|\n";
+    pressEnterToContinue();
+    Clear_Terminal();
+    View_Booking_Calendar();
+}
+
+
+// PART 2 ng calendar eventhingygyndlkfhj and also ng filtering
+// View All Inquiries
+void View_All_Inquiries()
+{
+    Clear_Terminal();
+    std::cout << "=============================================\n";
+    std::cout << "| CALENDAR ACTION: 2. VIEW ALL INQUIRIES    |\n";
+    std::cout << "=============================================\n";
+    std::cout << "Total Open Leads: ";
+    std::cout << "Last Inquiry Date: ";
+
+    std::cout << "\n--- INQUIRY PIPELINE ---\n";
+    std::cout << "---------------------------------------------------------------------------------\n";
+    std::cout << "| ID |         CLIENT NAME          | EVENT DATE  |    STATUS   |  NEXT ACTION  |\n";
+    std::cout << "|----|------------------------------|-------------|-------------|---------------|\n";
+    
+    std::cout << "\n--- INQUIRY ACTIONS ---\n";
+    std::cout << "1. Convert Inquiry to Active Event (Move to Dashboard/Calendar)\n";
+    std::cout << "2. Filter Inquiries (Status, Hot, Hold)\n";
+    std::cout << "3. Return to Booking Calendar Menu\n";
+    
+    int VAI_choice;
+    std::cout << "Enter Choice (1-3): ";
+    std::cin >> VAI_choice;
+    
+    switch (VAI_choice)
+    {
+        case 1:
+            Convert_Inquiry();
+            break;
+        
+        case 2:
+            Filter_Inquiries();
+            break;
+        
+        case 3:
+            View_Booking_Calendar();
+            break;
+        
+        default:
+            std::cout << "Inbaliddd!!!\n";
+            View_All_Inquiries();
+            break;
+    }
+}
+
+// Part 2.0 ng calendaryy eventingsfahd
+// Convert Inquiry type thing...
+void Convert_Inquiry()
+{
+    Clear_Terminal();
+    std::cout << "===============================================\n";
+    std::cout << "| CALENDAR ACTION: 1. CONVERT TO ACTIVE EVENT |\n";
+    std::cout << "===============================================\n";
+    std::cout << "Total Open Leads:\n";
+    
+    std::cout << "\n--- INQUIRY PIPELINE ---\n";
+    std::cout << "-----------------------------------------------------------------\n";
+    std::cout << "| ID |         CLIENT NAME          | EVENT DATE  |    STATUS   |\n";
+    std::cout << "|----|------------------------------|-------------|-------------|\n";
+    
+    int event_id;
+    std::cout << "Enter Event ID to Convert to Active: ";
+    std::cin >> event_id;
+    pressEnterToContinue();
+    View_All_Inquiries();
+}
+
+// Filter Inquiry type thing...
+void Filter_Inquiries()
+{
+    Clear_Terminal();
+    std::cout << "=============================================\n";
+    std::cout << "| ACTION: 2. FILTER INQUIRIES               |\n";
+    std::cout << "=============================================\n";
+    
+    std::cout << "Total Open Leads:\n";
+    
+    std::cout << "\n--- FILTER CRITERIAS ---\n";
+    std::cout << "1. Filter by STATUS (NEW, HOLD, EXPIRED, HOT)\n";
+    std::cout << "2. Filter by EVENT DATE\n";
+    std::cout << "3. Show All Inquiries (Clear Filter)\n";
+    std::cout << "4. Return to Inquiries Actions Menu\n";
+    
+    int FI_choice;
+    std::cout << "Enter Choice (1-4): ";
+    std::cin >> FI_choice;
+    
+    switch (FI_choice)
+    {
+        case 1:
+        Inquiries_Status();
+        break;
+        
+        case 2:
+        Inquiries_Event_Date();
+        
+        case 3:
+        View_All_Inquiries();
+        break;
+        
+        case 4:
+        View_All_Inquiries();
+        break;
+        
+        default:
+            std::cout << "Inbaliddd!!!\n";
+            Filter_Inquiries();
+            break;
+    }
+
+}
+
+
+void Inquiries_Status()
+{
+    std::cout << "==================================================\n";
+    std::cout << "| INQUIRIES STATUS: 1. (NEW, HOLD, EXPIRED, HOT) |\n";
+    std::cout << "==================================================\n";
+    
+    std::string Filter_Status;
+    std::cout << "Enter Status to Filter for: ";
+    std::cin >> Filter_Status;
+    
+    std::cout << "\n--- FILTER RESULT ---\n";
+    std::cout << "---------------------------------------------------------------------------------\n";
+    std::cout << "| ID |         CLIENT NAME          | EVENT DATE  |    STATUS   |  NEXT ACTION  |\n";
+    std::cout << "|----|------------------------------|-------------|-------------|---------------|\n";   
+    
+    pressEnterToContinue();
+    Clear_Terminal();
+    Filter_Inquiries();
+}
+
+void Inquiries_Event_Date()
+{
+    std::cout << "==================================================\n";
+    std::cout << "| INQUIRIES EVENT DATE: 2 (Filter by EVENT DATE) |\n";
+    std::cout << "==================================================\n";
+    
+    std::string Filter_Date;
+    std::cout << "Enter Event Date (MM/DD/YYYY) to Filter for: ";
+    std::cin >> Filter_Date;
+    
+    std::cout << "\n--- FILTER RESULT ---\n";
+    std::cout << "---------------------------------------------------------------------------------\n";
+    std::cout << "| ID |         CLIENT NAME          | EVENT DATE  |    STATUS   |  NEXT ACTION  |\n";
+    std::cout << "|----|------------------------------|-------------|-------------|---------------|\n";   
+    
+    pressEnterToContinue();
+    Clear_Terminal();
+    Filter_Inquiries();    
+}
 
 
