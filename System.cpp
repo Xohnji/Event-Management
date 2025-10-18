@@ -524,4 +524,33 @@ void ExportBookingToCSV()
 }
 
 
+// Event Calendar
+// Axel: Cout palang sya walang datas sa tables,
+// bahala na si James mag operate ng function neto
+// dahil wala akong alam sa CSV kung pano i rerekta ung data from CSV to terminal.
+void View_Booking_Calendar()
+{
+    Clear_Terminal();
+    std::cout << "==============================================\n";
+    std::cout << "|       MAIN MENU: 4. VIEW BOOKING CALENDAR   |\n";
+    std::cout << "==============================================\n";
+    std::cout << "Current Date: 10/18/2025\n\n";
+
+    std::cout << "--- CONFIRMED & PENDING EVENT SCHEDULE ---\n";
+    std::cout << "|   DATE   | EVENT ID |   CLIENT NAME   |         STATUS        | TOTAL GUEST |\n";
+    std::cout << "|----------|-----------|----------------|-----------------------|--------------|\n";
+    std::cout << "|          |           |                |                       |              |\n";
+    std::cout << "|          |           |                |                       |              |\n";
+    std::cout << "|          |           |                |                       |              |\n";
+    std::cout << "---------------------------------------------------------------------------------\n\n";
+
+    std::cout << "--- CALENDAR ACTIONS ---\n";
+    std::cout << "1. Filter Calendar (Month/Year)\n";
+    std::cout << "2. View All Inquiries (Includes dates on soft hold)\n";
+    std::cout << "3. Return to Main Menu\n\n";
+
+    std::cout << "Enter Choice (1-3): ";
+}
+
+
 
