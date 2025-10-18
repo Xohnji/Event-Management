@@ -533,18 +533,23 @@ void ExportBookingToCSV()
 void View_Booking_Calendar()
 {
     Clear_Terminal();
-    std::cout << "==============================================\n";
+    std::cout << "\n==============================================\n";
     std::cout << "|       MAIN MENU: 4. VIEW BOOKING CALENDAR   |\n";
     std::cout << "==============================================\n";
-    std::cout << "Current Date: 10/18/2025\n\n";
+    std::cout << "Current Date: \n";
 
     std::cout << "--- CONFIRMED & PENDING EVENT SCHEDULE ---\n";
-    std::cout << "|   DATE   | EVENT ID |   CLIENT NAME   |         STATUS        | TOTAL GUEST |\n";
-    std::cout << "|----------|-----------|----------------|-----------------------|--------------|\n";
-    std::cout << "|          |           |                |                       |              |\n";
-    std::cout << "|          |           |                |                       |              |\n";
-    std::cout << "|          |           |                |                       |              |\n";
-    std::cout << "---------------------------------------------------------------------------------\n";
+    std::cout << "---------------------------------------------------------------------------------------\n";
+    std::cout << "|   DATE   | EVENT ID  |      CLIENT NAME      |         STATUS        |  TOTAL GUEST |\n";
+    std::cout << "|----------|-----------|-----------------------|-----------------------|--------------|\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
+    std::cout << "|          |           |                       |                       |              |\n";
 
     std::cout << "\n--- CALENDAR ACTIONS ---\n";
     std::cout << "1. Filter Calendar (Month/Year)\n";
