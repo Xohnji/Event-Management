@@ -25,6 +25,7 @@ void Clear_Terminal();
 void Create_EventId();
 void pressEnterToContinue();
 void ExportBookingToCSV();
+void View_Booking_Calendar();
 #pragma region NewBooking
 void New_Booking();
 void CateringMain();
@@ -96,7 +97,7 @@ int main()
 
         case MenuOptions::View_Booking_Calendar:
             Clear_Terminal();
-            View_Booking_Calendar(); //event calendar testing lng
+            View_Booking_Calendar();
             break;
 
         case MenuOptions::Run_Financial_Reports:
@@ -552,6 +553,7 @@ void View_Booking_Calendar()
 
     std::cout << "Enter Choice (1-3): ";
 }
+
 
 
 
