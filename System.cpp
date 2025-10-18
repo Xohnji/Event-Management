@@ -544,16 +544,15 @@ void View_Booking_Calendar()
     std::cout << "|          |           |                |                       |              |\n";
     std::cout << "|          |           |                |                       |              |\n";
     std::cout << "|          |           |                |                       |              |\n";
-    std::cout << "---------------------------------------------------------------------------------\n\n";
+    std::cout << "---------------------------------------------------------------------------------\n";
 
-    std::cout << "--- CALENDAR ACTIONS ---\n";
+    std::cout << "\n--- CALENDAR ACTIONS ---\n";
     std::cout << "1. Filter Calendar (Month/Year)\n";
     std::cout << "2. View All Inquiries (Includes dates on soft hold)\n";
-    std::cout << "3. Return to Main Menu\n\n";
+    std::cout << "3. Return to Main Menu\n";
 
     std::cout << "Enter Choice (1-3): ";
 }
-
 
 
 
