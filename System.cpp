@@ -96,7 +96,7 @@ int main()
 
         case MenuOptions::View_Booking_Calendar:
             Clear_Terminal();
-            View_Booking_Calendar();
+            View_Booking_Calendar(); //event calendar testing lng
             break;
 
         case MenuOptions::Run_Financial_Reports:
@@ -552,6 +552,7 @@ void View_Booking_Calendar()
 
     std::cout << "Enter Choice (1-3): ";
 }
+
 
 
 
