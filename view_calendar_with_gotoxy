@@ -79,7 +79,6 @@ void View_Booking_Calendar()
     gotoxy(25, 13);
     std::cout << "|          |           |                       |                       |              |";
 
-    
     gotoxy(25, 17);
     std::cout << "--- CALENDAR ACTIONS ---";
     gotoxy(25, 18);
